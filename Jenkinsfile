@@ -3,12 +3,6 @@ node {
     sh 'echo "building..."'
     sh 'sleep 5'
 }
-
-try {
-    checkpoint 'Done Building'
-} catch (Exception e) {
-    echo "Checkpoint only available in Jenkins Enterprise"
-}
   
 stage 'Test in Parallel'
 parallel "quality scan": {
@@ -23,22 +17,10 @@ parallel "quality scan": {
     }
 }, failFast: true
 
-try {
-    checkpoint 'Done Building'
-} catch (Exception e) {
-    echo "Checkpoint only available in Jenkins Enterprise"
-}
-
 stage 'Stage'
 input message: 'Proceed to staging?'
 node {
     sh 'echo "deploy to staging..."'
-}
-  
-try {
-    checkpoint 'Done Building'
-} catch (Exception e) {
-    echo "Checkpoint only available in Jenkins Enterprise"
 }
 
 stage 'Production'
