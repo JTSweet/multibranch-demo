@@ -24,7 +24,6 @@ node('Windows7JNLPSlave32bit') {
 }
 
 stage 'Production'
-input 'Proceed to production?'
 node('Windows7JNLPSlave32bit') {
     bat 'echo "deploy to production..."'
 }
