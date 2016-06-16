@@ -18,7 +18,6 @@ parallel "quality scan": {
 }, failFast: true
 
 stage 'Stage'
-input message: 'Proceed to staging?'
 node('Windows7JNLPSlave32bit') {
     bat 'echo "deploy to staging..."'
 }
