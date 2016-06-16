@@ -1,19 +1,19 @@
 stage 'Build'
 node('Windows7JNLPSlave32bit') {
     bat 'echo "building..."'
-    bat 'timeout 5'
+    sleep 5
 }
   
 stage 'Test in Parallel'
 parallel "quality scan": {
     node('Windows7JNLPSlave32bit') {
         bat 'echo "quality scan..."'
-        bat 'timeout 10'
+        sleep 5
     }
 }, "integration test": {
     node('Windows7JNLPSlave32bit') {
         bat 'echo "integration test..."'
-        bat 'timeout 10'
+        sleep 5
     }
 }, failFast: true
 
